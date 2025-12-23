@@ -1,7 +1,15 @@
-import React from "react";
+import BottomHeader from "./components/header/BottomHeader";
+import TopHeader from "./components/header/TopHeader";
 
 const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <header>
+        <TopHeader />
+        <BottomHeader />
+      </header>
+    </>
+  );
 };
 
 export default App;
