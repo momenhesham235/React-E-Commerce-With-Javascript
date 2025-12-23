@@ -1,0 +1,36 @@
+.hero {
+  position: relative;
+  margin-bottom: 80px;
+  padding-top: 20px;
+}
+
+.swiper-slide .slider_content {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.swiper-slide .slider_content h1 {
+  text-transform: uppercase;
+  font-size: 1vw;
+  font-style: italic;
+  font-weight: normal;
+  margin-bottom: 0vw;
+}
+
+.swiper-slide .slider_content h2 {
+  text-transform: capitalize;
+  font-size: 2.5vw;
+  margin-bottom: 30px;
+  color: var(--main_color);
+  font-weight: bolder;
+  line-height: 1.1;
+}
+
+.swiper-slide .slider_content p {
+  font-size: 1.1vw;
+  /* margin-top: 2.5vw; */
+  margin-bottom: 2.5vw;
+}
