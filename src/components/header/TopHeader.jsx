@@ -1,10 +1,12 @@
+import "./header.css";
+import { logo } from "../../assets";
+
 import { Link } from "react-router-dom";
 import Image from "../common/Image";
+
 import { FaSearch } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
-import { logo } from "../../assets";
-import "./header.css";
 
 const TopHeader = () => {
   return (

@@ -1,4 +1,8 @@
+import "./header.css";
+
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+
 import useFetch from "../../hooks/useFetch";
 import { getCategories } from "../../services/category.service";
 import navLinks from "../../utils/constant/header.data";
@@ -7,9 +11,6 @@ import { IoMdMenu } from "react-icons/io";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import { PiSignInBold } from "react-icons/pi";
 import { FaUserPlus } from "react-icons/fa6";
-
-import "./header.css";
-import { useState } from "react";
 
 const BottomHeader = () => {
   const location = useLocation();
@@ -33,7 +34,9 @@ const BottomHeader = () => {
               <MdOutlineArrowDropDown />
             </div>
             {/* category list */}
-            <div className={`category_nav_list ${isCategoryOpen ? "active" : ""}`}>
+            <div
+              className={`category_nav_list ${isCategoryOpen ? "active" : ""}`}
+            >
               <ul>
                 {loading ? (
                   <li>Loading...</li>

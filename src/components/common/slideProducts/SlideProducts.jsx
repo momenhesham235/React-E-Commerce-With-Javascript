@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 
 import "./slideProducts.css";
+import SlideProductsSkeleton from "../../skeleton/SlideProductsSkeleton";
 
 const SlideProducts = ({ category }) => {
   // fetch products
@@ -47,11 +48,13 @@ const SlideProducts = ({ category }) => {
       <div className="container">
         <div className="top_slide">
           <h3>{category.replace("-", " ")}</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <p> {productsLength} products </p>
         </div>
 
         {loading ? (
-          <p>Loading...</p>
+          <>
+            <SlideProductsSkeleton />
+          </>
         ) : error ? (
           <p>{error}</p>
         ) : (
