@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Image from "../Image";
 
 import { FaStar, FaRegStarHalfStroke } from "react-icons/fa6";
@@ -5,20 +6,17 @@ import { FaCartArrowDown, FaRegHeart, FaShare } from "react-icons/fa";
 
 import "./products.css";
 
-const Products = () => {
+const Products = ({ product }) => {
+  console.log(product);
   return (
     <div className="product">
       <div className="img_product">
-        <Image
-          src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
-          alt=""
-        />
+        <Image src={product.images[0]} alt="" />
       </div>
 
-      <p className="name_product">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni harum id
-        laborum!
-      </p>
+      <p className="name_product">{product.title}</p>
+
+      <p className="product_desc">{product.description.slice(0, 40) + "..."}</p>
 
       <div className="product_rating">
         <FaStar />
@@ -29,7 +27,7 @@ const Products = () => {
       </div>
 
       <p className="product_price">
-        <span>$</span> 100
+        <span>$</span> {product.price}
       </p>
 
       <div className="product_icons">
@@ -47,4 +45,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default memo(Products);

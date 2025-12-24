@@ -27,7 +27,7 @@ const useFetch = (fetchFn, deps = []) => {
     return () => {
       isMounted = false;
     };
-  }, [fetchFn, ...deps]); // ✅ الحل هنا
+  }, deps);
 
   return { data, loading, error };
 };

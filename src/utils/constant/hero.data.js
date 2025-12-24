@@ -1,23 +1,25 @@
+import { hero1, hero2, hero3 } from "../../assets";
+
 const slides = [
   {
     title: "Introducing the new",
     name: "Microsoft Xbox 360 Controller",
     desc: "Windows Xp/10/7/8 Ps3, Tv Box",
-    image: "src/assets/img/banner_Hero1.jpg",
+    image: hero1,
     link: "/",
   },
   {
     title: "Introducing the new",
     name: "Microsoft Xbox 360 Controller",
     desc: "Windows Xp/10/7/8 Ps3, Tv Box",
-    image: "src/assets/img/banner_Hero1.jpg",
+    image: hero2,
     link: "/",
   },
   {
     title: "Introducing the new",
     name: "Microsoft Xbox 360 Controller",
     desc: "Windows Xp/10/7/8 Ps3, Tv Box",
-    image: "src/assets/img/banner_Hero1.jpg",
+    image: hero3,
     link: "/",
   },
 ];

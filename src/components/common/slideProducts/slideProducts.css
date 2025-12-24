@@ -26,6 +26,7 @@
 }
 
 .top_slide h3 {
+  text-transform: capitalize;
   font-size: 30px;
   color: var(--main_color);
   margin-bottom: 10px;

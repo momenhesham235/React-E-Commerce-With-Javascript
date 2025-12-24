@@ -28,12 +28,6 @@
   font-weight: 600;
   margin-bottom: 10px;
   color: var(--color_heading);
-  transition: 0.3s ease-in-out;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
 .product .product_rating {
@@ -49,7 +43,8 @@
 
 .product .product_price {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
+  color: var(--main_color);
 }
 
 .product .product_price span {
