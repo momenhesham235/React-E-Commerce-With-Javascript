@@ -10,8 +10,6 @@ import "./heroSlider.css";
 import { Autoplay, Pagination } from "swiper/modules";
 
 const HeroSlider = () => {
-  console.log("hero slider .................");
-
   return (
     <>
       <div className="hero">

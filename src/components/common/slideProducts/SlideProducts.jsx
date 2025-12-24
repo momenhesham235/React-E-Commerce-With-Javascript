@@ -24,28 +24,23 @@ const SlideProducts = ({ category }) => {
     0: {
       slidesPerView: 1,
       spaceBetween: 10,
+      centeredSlides: true,
       navigation: false,
     },
-    576: {
-      slidesPerView: 2,
-      spaceBetween: 10,
-    },
+    576: { slidesPerView: 2, spaceBetween: 15, centeredSlides: false },
     768: {
       slidesPerView: 3,
-      spaceBetween: 10,
-      navigation: false,
+      spaceBetween: 20,
+      centeredSlides: false,
+      navigation: true,
     },
-    1024: {
-      slidesPerView: 4,
-    },
-    1200: {
-      slidesPerView: 5,
-    },
+    1024: { slidesPerView: 4, spaceBetween: 20, centeredSlides: false },
+    1200: { slidesPerView: 5, spaceBetween: 20, centeredSlides: false },
   };
 
+  const slidesPerView = 4;
   const productsLength = data?.products?.length || 0;
-  const MAX_SLIDES = 5;
-  const shouldLoop = productsLength > MAX_SLIDES;
+  const shouldLoop = productsLength >= slidesPerView;
 
   return (
     <section className="slide_products slide">
@@ -68,12 +63,13 @@ const SlideProducts = ({ category }) => {
             autoplay={
               shouldLoop ? { delay: 2500, disableOnInteraction: false } : false
             }
+            // spaceBetween={20}
             modules={[Navigation, Autoplay]}
             className="mySwiper"
             breakpoints={swiperBreakpoints}
           >
             {data?.products?.map((product) => (
-              <SwiperSlide key={product.id}>
+              <SwiperSlide key={product.id} className="swiper_product">
                 <Products product={product} />
               </SwiperSlide>
             ))}

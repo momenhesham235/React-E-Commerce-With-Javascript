@@ -3,7 +3,7 @@ import Image from "../common/Image";
 import { FaSearch } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
-
+import { logo } from "../../assets";
 import "./header.css";
 
 const TopHeader = () => {
@@ -11,7 +11,7 @@ const TopHeader = () => {
     <div className="top_header">
       <div className="container">
         <Link to="/" className="logo">
-          <Image src="./logo.png" alt="logo" />
+          <Image src={logo} alt="logo" />
         </Link>
 
         <form className="search_box">

@@ -1,10 +1,6 @@
 import baseUrl from "./base.api";
 
-export const getProducts = () => {
-  return baseUrl.get("/products");
-};
-
-export const getProduct = (id) => {
+export const getProductById = (id) => {
   return baseUrl.get(`/products/${id}`);
 };
 

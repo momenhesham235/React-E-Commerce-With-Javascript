@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { Link } from "react-router-dom";
+
 import Image from "../Image";
 
 import { FaStar, FaRegStarHalfStroke } from "react-icons/fa6";
@@ -7,16 +9,15 @@ import { FaCartArrowDown, FaRegHeart, FaShare } from "react-icons/fa";
 import "./products.css";
 
 const Products = ({ product }) => {
-  console.log(product);
   return (
-    <div className="product">
+    <Link to={`/product/${product.id}`} className="product">
       <div className="img_product">
-        <Image src={product.images[0]} alt="" />
+        <Image src={product.images[0]} alt={product.title} />
       </div>
 
-      <p className="name_product">{product.title}</p>
+      <p className="name_product">{product.title.slice(0, 15) + "..."}</p>
 
-      <p className="product_desc">{product.description.slice(0, 40) + "..."}</p>
+      <p className="product_desc">{product.description.slice(0, 35) + "..."}</p>
 
       <div className="product_rating">
         <FaStar />
@@ -41,7 +42,7 @@ const Products = ({ product }) => {
           <FaCartArrowDown />
         </span>
       </div>
-    </div>
+    </Link>
   );
 };
 
