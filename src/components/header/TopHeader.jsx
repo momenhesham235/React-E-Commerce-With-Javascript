@@ -7,8 +7,10 @@ import Image from "../common/Image";
 import { FaSearch } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
+import useCartStore from "../../store/cart.store";
 
 const TopHeader = () => {
+  const { cart } = useCartStore();
   return (
     <div className="top_header">
       <div className="container">
@@ -36,7 +38,7 @@ const TopHeader = () => {
 
           <div className="icon">
             <TiShoppingCart />
-            <span className="count">0</span>
+            <span className="count">{cart.length}</span>
           </div>
         </div>
       </div>
