@@ -36,10 +36,12 @@ const TopHeader = () => {
             <span className="count">0</span>
           </div>
 
-          <div className="icon">
-            <TiShoppingCart />
-            <span className="count">{cart.length}</span>
-          </div>
+          <Link to="/cart">
+            <div className="icon">
+              <TiShoppingCart />
+              <span className="count">{cart.length}</span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

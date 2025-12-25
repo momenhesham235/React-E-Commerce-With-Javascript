@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Image from "../Image";
 
@@ -8,11 +8,39 @@ import { FaCartArrowDown, FaRegHeart, FaShare } from "react-icons/fa";
 
 import "./products.css";
 import useCartStore from "../../../store/cart.store";
+import toast from "react-hot-toast";
 
 const Products = ({ product }) => {
   const { cart, addToCart } = useCartStore();
 
   const isInCart = cart.some((item) => item.id === product.id);
+
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    addToCart(product);
+
+    toast.success(
+      <div className="toast-wrapper">
+        <img
+          src={product.images[0]}
+          alt={product.title}
+          className="toast-img"
+        />
+
+        <div className="toast-content">
+          <strong>{product.title}</strong>
+          added to Cart
+          <div>
+            <button className="btn" onClick={() => navigate("/cart")}>
+              View Cart
+            </button>
+          </div>
+        </div>
+      </div>,
+      { duration: 3500 }
+    );
+  };
 
   return (
     <div className={`product ${isInCart ? "inCart" : ""}`}>
@@ -46,12 +74,7 @@ const Products = ({ product }) => {
       </Link>
 
       <div className="product_icons">
-        <span
-          className="icon"
-          onClick={() => {
-            if (!isInCart) addToCart(product);
-          }}
-        >
+        <span className="icon" onClick={handleAddToCart}>
           <FaCartArrowDown />
         </span>
         <span className="icon">
