@@ -22,20 +22,26 @@ const ProductDetails = () => {
 
   const category = product?.data?.category;
 
-  if (loading) return <ProductDetailsSkeleton />;
+  // if (loading) return <ProductDetailsSkeleton />;
 
   if (error) return <div>Product not found</div>;
   return (
     <section className="item_details">
       <div className="container">
-        <div className="item_details_wrapper">
-          <ProductImages
-            images={product.data.images}
-            title={product.data.title}
-          />
+        {loading ? (
+          <ProductDetailsSkeleton />
+        ) : (
+          <>
+            <div className="item_details_wrapper">
+              <ProductImages
+                images={product.data.images}
+                title={product.data.title}
+              />
 
-          <ProductInfo product={product.data} />
-        </div>
+              <ProductInfo product={product.data} />
+            </div>
+          </>
+        )}
 
         <SlideProducts category={category} />
       </div>

@@ -8,6 +8,7 @@ import { logo } from "../../../assets";
 import { FaSearch, FaRegHeart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import useCartStore from "../../../store/cart.store";
+import { motion } from "framer-motion";
 
 const TopHeader = () => {
   const { cart } = useCartStore();
@@ -52,7 +53,14 @@ const TopHeader = () => {
 
       {/* Search Modal (Mobile) */}
       {openSearch && (
-        <div className="search_modal" onClick={() => setOpenSearch(false)}>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+          className="search_modal"
+          onClick={() => setOpenSearch(false)}
+        >
           <div
             className="search_modal_content"
             onClick={(e) => e.stopPropagation()}
@@ -60,7 +68,7 @@ const TopHeader = () => {
             <input type="text" placeholder="Search for products..." autoFocus />
             <button onClick={() => setOpenSearch(false)}>✕</button>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );

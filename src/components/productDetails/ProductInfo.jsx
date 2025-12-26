@@ -1,9 +1,13 @@
 import { memo } from "react";
 import { FaRegHeart, FaShare, FaStar } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
+import useAddToCart from "../../hooks/useAddToCart";
 const ProductInfo = ({ product }) => {
+  const { handleAddToCart, isInCart } = useAddToCart();
+  const isInCartRes = isInCart(product.id);
+
   return (
-    <div className="details_item">
+    <div className={`details_item ${isInCartRes ? "inCart" : ""}`}>
       <h2 className="item_title">{product.title}</h2>
 
       <div className="item_stars">
@@ -30,8 +34,8 @@ const ProductInfo = ({ product }) => {
         Hurry Up! Only {product.stock} products left in stock.
       </h5>
 
-      <button className="btn">
-        Add to cart <TiShoppingCart />
+      <button className="btn" onClick={() => handleAddToCart(product)}>
+        {isInCartRes ? "In Cart" : "Add to Cart"} <TiShoppingCart />
       </button>
 
       <div className="item_icons">

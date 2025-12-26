@@ -107,6 +107,11 @@
   line-height: 1.6;
 }
 
+.item_details .details_item .stock {
+  color: var(--main_color);
+  font-weight: 600;
+}
+
 .item_details .details_item .btn {
   font-size: 16px;
   border-radius: 4px;
@@ -141,6 +146,12 @@
   transform: scale(1.1);
 }
 
+.details_item.inCart .btn {
+  background: var(--main_color);
+  color: var(--white_color);
+  cursor: not-allowed;
+}
+
 /* ================= Tablet ================= */
 
 @media (max-width: 992px) {
@@ -170,7 +181,7 @@
   }
 
   .item_details .img_item .small_img img {
-    width: calc(33.333% - 6px);
+    width: calc(25% - 6px);
   }
 
   .item_details .details_item .btn {

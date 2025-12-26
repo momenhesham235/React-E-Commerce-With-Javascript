@@ -68,6 +68,14 @@
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
+.bottom_header .category_nav_list li {
+  border-bottom: 1px solid var(--border_color);
+}
+
+.bottom_header .category_nav_list li:last-child {
+  border-bottom: none;
+}
+
 .bottom_header .category_nav_list a {
   display: block;
   padding: 10px 15px;

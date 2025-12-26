@@ -29,8 +29,8 @@ const HeroSlider = () => {
                 <div className="slider_content">
                   <h1>{slide.title}</h1>
                   <h2>
-                    {slide.name.split(" ").slice(0, 2).join(" ")} <br />
-                    {slide.name.split(" ").slice(2).join(" ")}
+                    {slide?.name?.split(" ").slice(0, 2).join(" ")} <br />
+                    {slide?.name?.split(" ").slice(2).join(" ")}
                   </h2>
                   <p>{slide.desc}</p>
                   <Link to={slide.link} className="btn">

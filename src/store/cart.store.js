@@ -50,12 +50,20 @@ const useCartStore = create(
           ),
         }),
 
+      // 🛒
+      isInCart: (id) => get().cart.some((item) => item.id === id),
+
+      // 🗑 Clear
+      clearCart: () => set({ cart: [] }),
+
       // 🧮 Total
       getTotal: () =>
         get().cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
     }),
+
     {
       name: "cart-storage",
+      partialize: (state) => ({ cart: state.cart }),
     }
   )
 );

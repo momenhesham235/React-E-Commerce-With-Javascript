@@ -1,9 +1,12 @@
 import Cart from "../../components/cart/Cart";
+import PageTransition from "../../components/common/PageTransition";
 
 const CartPage = () => {
   return (
     <main>
-      <Cart />
+      <PageTransition>
+        <Cart />
+      </PageTransition>
     </main>
   );
 };

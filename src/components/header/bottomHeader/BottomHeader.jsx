@@ -1,6 +1,4 @@
-// BottomHeader.jsx
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import { PiSignInBold } from "react-icons/pi";
@@ -10,42 +8,37 @@ import useFetch from "../../../hooks/useFetch";
 import { getCategories } from "../../../services/category.service";
 import navLinks from "../../../utils/constant/header.data";
 
-import "./bottomHeader.css"; // لو حابب تفصل CSS
+import useHeaderUI from "../../../hooks/useHeaderUI";
+import NavLinks from "./NavLinks";
+
+import "./bottomHeader.css";
 
 const BottomHeader = () => {
-  const location = useLocation();
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const { data: categories, loading } = useFetch(getCategories, []);
+  const { open, toggle, closeAll, categoryRef, menuRef } = useHeaderUI();
+  const { data: categories = [], loading } = useFetch(getCategories, []);
 
   return (
     <div className="bottom_header">
       <div className="container">
         <nav className="nav">
-          {/* category nav */}
-          <div className="category_nav">
-            <div
-              className="category_btn"
-              onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-            >
+          {/* Category */}
+          <div className="category_nav" ref={categoryRef}>
+            <button className="category_btn" onClick={() => toggle("category")}>
               <IoMdMenu />
               <p>Browse Categories</p>
               <MdOutlineArrowDropDown />
-            </div>
+            </button>
 
             <div
-              className={`category_nav_list ${isCategoryOpen ? "active" : ""}`}
+              className={`category_nav_list ${open.category ? "active" : ""}`}
             >
               <ul>
                 {loading ? (
                   <li>Loading...</li>
                 ) : (
-                  categories.map((category) => (
-                    <li key={category.name}>
-                      <Link to={`/category/${category.slug}`}>
-                        {category.name}
-                      </Link>
+                  categories.map((cat) => (
+                    <li key={cat.slug} onClick={closeAll}>
+                      <Link to={`/category/${cat.slug}`}>{cat.name}</Link>
                     </li>
                   ))
                 )}
@@ -53,42 +46,28 @@ const BottomHeader = () => {
             </div>
           </div>
 
-          {/* desktop nav links */}
-          <ul className="nav_links">
-            {navLinks.map((link) => (
-              <li
-                key={link.id}
-                className={location.pathname === link.path ? "active" : ""}
-              >
-                <Link to={link.path}>{link.name}</Link>
-              </li>
-            ))}
-          </ul>
+          {/* Desktop */}
+          <NavLinks links={navLinks} className="nav_links" />
 
-          {/* mobile nav links */}
-          <ul className={`mobile_nav_links ${isMenuOpen ? "active" : ""}`}>
-            {navLinks.map((link) => (
-              <li
-                key={link.id}
-                className={location.pathname === link.path ? "active" : ""}
-              >
-                <Link to={link.path}>{link.name}</Link>
-              </li>
-            ))}
-          </ul>
+          {/* Mobile */}
+          <NavLinks
+            links={navLinks}
+            className={`mobile_nav_links ${open.menu ? "active" : ""}`}
+            onClick={closeAll}
+            ref={menuRef}
+          />
         </nav>
 
-        {/* right icons */}
+        {/* Right */}
         <div className="sign_register_icon">
-          <button
-            className="menu_btn"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <button className="menu_btn" onClick={() => toggle("menu")}>
             Menu <IoMdMenu />
           </button>
+
           <Link to="/login">
             <PiSignInBold />
           </Link>
+
           <Link to="/register">
             <FaUserPlus />
           </Link>

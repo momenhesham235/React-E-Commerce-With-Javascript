@@ -1,0 +1,19 @@
+.category_products {
+  padding: 40px 0;
+  background: var(--bg_color);
+}
+
+.products {
+  display: grid;
+  gap: 20px;
+
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.no_products {
+  grid-column: 1 / -1; /* ياخد عرض الجريد كله */
+  text-align: center;
+  padding: 40px 0;
+  color: var(--p_color);
+  font-size: 18px;
+}

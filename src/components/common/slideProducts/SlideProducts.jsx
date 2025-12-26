@@ -47,7 +47,7 @@ const SlideProducts = ({ category }) => {
     <section className="slide_products slide">
       <div className="container">
         <div className="top_slide">
-          <h3>{category.replace("-", " ")}</h3>
+          <h3>{category?.replace("-", " ")}</h3>
           <p> {productsLength} products </p>
         </div>
 
