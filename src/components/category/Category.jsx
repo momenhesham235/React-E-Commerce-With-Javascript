@@ -1,4 +1,4 @@
-import "./Category.css";
+import "./category.css";
 
 import Products from "../common/products/Products";
 import { useParams } from "react-router-dom";
