@@ -1,0 +1,141 @@
+/* ===== Top Header ===== */
+.top_header {
+  background: var(--white_color);
+  border-bottom: 1px solid var(--border_color);
+}
+
+.top_header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+/* Logo */
+.top_header .logo {
+  width: 60px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Search Box */
+.search_box {
+  width: calc(100% - 200px);
+  max-width: 600px;
+  display: flex;
+  background: var(--bg_color);
+  border-radius: 30px;
+  border: 1px solid var(--main_color);
+}
+
+.search_box input {
+  flex: 1;
+  height: 45px;
+  padding: 0 15px;
+  background: transparent;
+}
+
+.search_box button {
+  width: 55px;
+  background: var(--main_color);
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+}
+
+.search_box button svg {
+  fill: var(--white_color);
+}
+
+/* Icons */
+.header_icons {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header_icons svg {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.cart_icon {
+  position: relative;
+}
+
+.cart_icon .count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--main_color);
+  color: #fff;
+  font-size: 11px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+}
+
+/* Mobile Search Button */
+.mobile_search_btn {
+  display: none;
+  background: none;
+  color: var(--main_color);
+}
+
+/* ===== Search Modal ===== */
+.search_modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+}
+
+.search_modal_content {
+  width: 100%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.search_modal_content input {
+  flex: 1;
+  height: 45px;
+  padding: 0 12px;
+  border: 1px solid var(--border_color);
+  border-radius: 8px;
+}
+
+.search_modal_content button {
+  background: var(--main_color);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .desktop_search {
+    display: none;
+  }
+
+  .mobile_search_btn {
+    display: block;
+  }
+
+  .search_box {
+    width: auto;
+  }
+
+  .header_icons {
+    gap: 15px;
+  }
+}

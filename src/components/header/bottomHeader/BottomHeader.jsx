@@ -1,20 +1,21 @@
-import "./header.css";
-
-import { Link, useLocation } from "react-router-dom";
+// BottomHeader.jsx
 import { useState } from "react";
-
-import useFetch from "../../hooks/useFetch";
-import { getCategories } from "../../services/category.service";
-import navLinks from "../../utils/constant/header.data";
-
+import { Link, useLocation } from "react-router-dom";
 import { IoMdMenu } from "react-icons/io";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import { PiSignInBold } from "react-icons/pi";
 import { FaUserPlus } from "react-icons/fa6";
 
+import useFetch from "../../../hooks/useFetch";
+import { getCategories } from "../../../services/category.service";
+import navLinks from "../../../utils/constant/header.data";
+
+import "./bottomHeader.css"; // لو حابب تفصل CSS
+
 const BottomHeader = () => {
   const location = useLocation();
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { data: categories, loading } = useFetch(getCategories, []);
 
@@ -24,7 +25,6 @@ const BottomHeader = () => {
         <nav className="nav">
           {/* category nav */}
           <div className="category_nav">
-            {/* category button */}
             <div
               className="category_btn"
               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
@@ -33,7 +33,7 @@ const BottomHeader = () => {
               <p>Browse Categories</p>
               <MdOutlineArrowDropDown />
             </div>
-            {/* category list */}
+
             <div
               className={`category_nav_list ${isCategoryOpen ? "active" : ""}`}
             >
@@ -53,8 +53,20 @@ const BottomHeader = () => {
             </div>
           </div>
 
-          {/* nav links */}
+          {/* desktop nav links */}
           <ul className="nav_links">
+            {navLinks.map((link) => (
+              <li
+                key={link.id}
+                className={location.pathname === link.path ? "active" : ""}
+              >
+                <Link to={link.path}>{link.name}</Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* mobile nav links */}
+          <ul className={`mobile_nav_links ${isMenuOpen ? "active" : ""}`}>
             {navLinks.map((link) => (
               <li
                 key={link.id}
@@ -66,7 +78,14 @@ const BottomHeader = () => {
           </ul>
         </nav>
 
+        {/* right icons */}
         <div className="sign_register_icon">
+          <button
+            className="menu_btn"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            Menu <IoMdMenu />
+          </button>
           <Link to="/login">
             <PiSignInBold />
           </Link>

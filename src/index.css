@@ -20,9 +20,6 @@
 body {
   background-color: var(--white_color);
   font-family: "Inter", sans-serif;
-}
-
-main {
   margin-top: 160px;
 }
 
@@ -65,8 +62,13 @@ button {
   outline: none;
 }
 
-button:disabled {
-  cursor: not-allowed;
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--white_color);
+  width: 100%;
+  z-index: 999;
 }
 
 /* Global Class CSS */
