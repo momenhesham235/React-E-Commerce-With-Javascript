@@ -1,7 +1,10 @@
-/* ===== Top Header ===== */
+/* ===================== TOP HEADER ===================== */
 .top_header {
   background: var(--white_color);
   border-bottom: 1px solid var(--border_color);
+  position: sticky;
+  top: 0;
+  z-index: 1500;
 }
 
 .top_header .container {
@@ -12,21 +15,35 @@
   padding: 15px 0;
 }
 
-/* Logo */
-.top_header .logo {
+/* ===================== LOGO ===================== */
+.logo {
   width: 60px;
-  font-weight: bold;
-  font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 
-/* Search Box */
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* ===================== SEARCH ===================== */
+.search_wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
 .search_box {
-  width: calc(100% - 200px);
+  width: 90%;
+  margin: 0 auto;
   max-width: 600px;
   display: flex;
+  align-items: center;
   background: var(--bg_color);
   border-radius: 30px;
   border: 1px solid var(--main_color);
+  overflow: hidden;
 }
 
 .search_box input {
@@ -34,33 +51,94 @@
   height: 45px;
   padding: 0 15px;
   background: transparent;
+  border: none;
+  outline: none;
 }
 
 .search_box button {
-  width: 55px;
+  width: 10%;
+  height: 45px;
   background: var(--main_color);
+  border: none;
   border-radius: 0 30px 30px 0;
   cursor: pointer;
 }
 
 .search_box button svg {
-  fill: var(--white_color);
+  color: #fff;
+  font-size: 16px;
 }
 
-/* Icons */
+.search_box input::placeholder {
+  color: var(--text_color);
+  font-style: italic;
+}
+
+/* ===================== SEARCH RESULTS ===================== */
+.search_results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+
+  background: var(--white_color);
+  border: 1px solid var(--border_color);
+  border-radius: 12px;
+
+  max-height: 320px;
+  overflow-y: auto;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+}
+
+.search_result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search_result:hover {
+  background: var(--bg_color);
+}
+
+.search_result img {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.search_result p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color_heading);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===================== HEADER ICONS ===================== */
 .header_icons {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 22px;
 }
 
 .header_icons svg {
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
 }
 
+/* Cart */
 .cart_icon {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .cart_icon .count {
@@ -77,51 +155,58 @@
   line-height: 18px;
 }
 
-/* Mobile Search Button */
+/* ===================== MOBILE SEARCH ===================== */
 .mobile_search_btn {
   display: none;
   background: none;
+  border: none;
   color: var(--main_color);
+  cursor: pointer;
 }
 
-/* ===== Search Modal ===== */
+/* ===================== SEARCH MODAL ===================== */
 .search_modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: flex-start;
   justify-content: center;
   padding: 20px;
-  z-index: 2000;
+  z-index: 3000;
 }
 
 .search_modal_content {
-  width: 100%;
   background: #fff;
+  width: 100%;
+  max-width: 720px;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 14px;
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
-.search_modal_content input {
+.search_modal_content .search_wrapper {
   flex: 1;
-  height: 45px;
-  padding: 0 12px;
-  border: 1px solid var(--border_color);
-  border-radius: 8px;
 }
 
 .search_modal_content button {
   background: var(--main_color);
   color: #fff;
+  border: none;
   border-radius: 8px;
   padding: 0 14px;
+  height: 45px;
   cursor: pointer;
+  font-size: 16px;
 }
 
-/* ===== Responsive ===== */
+.search_modal_content .search_box button {
+  border-radius: 0px;
+}
+
+/* ===================== RESPONSIVE ===================== */
 @media (max-width: 768px) {
   .desktop_search {
     display: none;
@@ -131,11 +216,11 @@
     display: block;
   }
 
-  .search_box {
-    width: auto;
+  .header_icons {
+    gap: 16px;
   }
 
-  .header_icons {
-    gap: 15px;
+  .search_results {
+    max-height: 60vh;
   }
 }

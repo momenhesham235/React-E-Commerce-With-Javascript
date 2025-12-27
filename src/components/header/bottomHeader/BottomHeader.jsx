@@ -36,11 +36,13 @@ const BottomHeader = () => {
                 {loading ? (
                   <li>Loading...</li>
                 ) : (
-                  categories.map((cat) => (
-                    <li key={cat.slug} onClick={closeAll}>
-                      <Link to={`/category/${cat.slug}`}>{cat.name}</Link>
-                    </li>
-                  ))
+                  [...categories]
+                    .sort((a, b) => a.name.localeCompare(b.name))
+                    .map((cat) => (
+                      <li key={cat.slug} onClick={closeAll}>
+                        <Link to={`/category/${cat.slug}`}>{cat.name}</Link>
+                      </li>
+                    ))
                 )}
               </ul>
             </div>
@@ -61,7 +63,7 @@ const BottomHeader = () => {
         {/* Right */}
         <div className="sign_register_icon">
           <button className="menu_btn" onClick={() => toggle("menu")}>
-            Menu <IoMdMenu />
+            <IoMdMenu />
           </button>
 
           <Link to="/login">

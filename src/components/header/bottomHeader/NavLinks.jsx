@@ -1,10 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
+import { forwardRef } from "react";
 
-const NavLinks = ({ links, className, onClick }) => {
+const NavLinks = forwardRef(({ links, className, onClick }, ref) => {
   const location = useLocation();
 
   return (
-    <ul className={className}>
+    <ul className={className} ref={ref}>
       {links.map((link) => (
         <li
           key={link.id}
@@ -16,6 +17,6 @@ const NavLinks = ({ links, className, onClick }) => {
       ))}
     </ul>
   );
-};
+});
 
 export default NavLinks;

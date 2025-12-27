@@ -30,6 +30,7 @@
 
 .item_details .img_item .small_img {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 12px;
 }

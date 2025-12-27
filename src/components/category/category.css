@@ -5,9 +5,10 @@
 
 .products {
   display: grid;
+  place-items: center;
   gap: 20px;
-
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
 }
 
 .no_products {
