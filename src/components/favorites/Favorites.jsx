@@ -1,4 +1,4 @@
-import "./Favorites.css";
+import "./favorites.css";
 
 import { Link } from "react-router-dom";
 import useFavoritesStore from "../../store/favorites.store";
