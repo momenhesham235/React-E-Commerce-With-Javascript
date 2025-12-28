@@ -203,7 +203,7 @@
 }
 
 .search_modal_content .search_box button {
-  border-radius: 0px;
+  display: none;
 }
 
 /* ===================== RESPONSIVE ===================== */
@@ -222,5 +222,6 @@
 
   .search_results {
     max-height: 60vh;
+    top: calc(100% + 40px);
   }
 }

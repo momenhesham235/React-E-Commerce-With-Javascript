@@ -22,8 +22,6 @@ const ProductDetails = () => {
 
   const category = product?.data?.category;
 
-  // if (loading) return <ProductDetailsSkeleton />;
-
   if (error) return <div>Product not found</div>;
   return (
     <section className="item_details">

@@ -9,13 +9,21 @@ import { FaStar, FaRegStarHalfStroke, FaCheck } from "react-icons/fa6";
 import { FaCartArrowDown, FaRegHeart, FaShare } from "react-icons/fa";
 
 import useAddToCart from "../../../hooks/useAddToCart.js";
+import useFavoritesStore from "../../../store/favorites.store.js";
 
 const Products = ({ product }) => {
   const { handleAddToCart, isInCart } = useAddToCart();
   const isInCartRes = isInCart(product.id);
 
+  const { addFavorite, isInFavorites } = useFavoritesStore();
+  const isInFavoritesRes = isInFavorites(product.id);
+
   return (
-    <div className={`product ${isInCartRes ? "inCart" : ""}`}>
+    <div
+      className={`product ${isInCartRes ? "inCart" : ""} ${
+        isInFavoritesRes ? "inFavorites" : ""
+      }`}
+    >
       <Link to={`/product/${product.id}`}>
         <span className="status_cart">
           <FaCheck />
@@ -49,7 +57,7 @@ const Products = ({ product }) => {
         <span className="icon" onClick={() => handleAddToCart(product)}>
           <FaCartArrowDown />
         </span>
-        <span className="icon">
+        <span className="icon" onClick={() => addFavorite(product)}>
           <FaRegHeart />
         </span>
         <span className="icon">

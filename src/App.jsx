@@ -8,6 +8,7 @@ import CartPage from "./pages/cart/CartPage";
 import ScrollToTop from "./components/common/ScrollToTop";
 import CategoryPage from "./pages/category/CategoryPage";
 import SearchPage from "./pages/search/SearchPage";
+import FavoritesPage from "./pages/favorites/FavoritesPage";
 
 import { AnimatePresence } from "framer-motion";
 import { Toaster } from "react-hot-toast";
@@ -24,6 +25,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/search" element={<SearchPage />} />

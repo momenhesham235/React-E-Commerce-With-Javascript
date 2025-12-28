@@ -113,3 +113,8 @@
   cursor: not-allowed;
   /* pointer-events: none; */
 }
+.product.inFavorites .product_icons span:nth-child(2) {
+  background-color: var(--main_color);
+  color: var(--white_color);
+  cursor: not-allowed;
+}

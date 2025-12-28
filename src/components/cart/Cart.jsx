@@ -15,7 +15,7 @@ const Cart = () => {
         <div className="items">
           {cart.length === 0 ? (
             <p className="empty">
-              Cart is empty :
+              Your cart is empty 😔:
               <Link to="/" className="btn">
                 Shop Now
               </Link>

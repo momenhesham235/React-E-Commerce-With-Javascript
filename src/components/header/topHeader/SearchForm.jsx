@@ -7,7 +7,7 @@ import useFetch from "../../../hooks/useFetch";
 import "./topHeader.css";
 const SearchForm = ({ className = "", autoFocus = false, onClose }) => {
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState(false);
+  const [openSuggestions, setOpenSuggestions] = useState(false);
   const navigate = useNavigate();
   const wrapperRef = useRef(null);
 
@@ -23,7 +23,7 @@ const SearchForm = ({ className = "", autoFocus = false, onClose }) => {
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
-        setOpen(false);
+        setOpenSuggestions(false);
       }
     };
 
@@ -33,10 +33,10 @@ const SearchForm = ({ className = "", autoFocus = false, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!query.trim()) return;
+    if (!query.trim()) return alert("Please enter a search query.");
 
     navigate(`/search?q=${encodeURIComponent(query)}`);
-    setOpen(false);
+    setOpenSuggestions(false);
     onClose?.();
   };
 
@@ -51,10 +51,10 @@ const SearchForm = ({ className = "", autoFocus = false, onClose }) => {
           autoFocus={autoFocus}
           autoComplete="off"
           value={query}
-          onFocus={() => setOpen(true)}
+          onFocus={() => setOpenSuggestions(true)}
           onChange={(e) => {
             setQuery(e.target.value);
-            setOpen(true);
+            setOpenSuggestions(true);
           }}
         />
         <button type="submit">
@@ -63,7 +63,7 @@ const SearchForm = ({ className = "", autoFocus = false, onClose }) => {
       </form>
 
       {/* Suggestions */}
-      {open && query.trim() && products.length > 0 && (
+      {openSuggestions && query.trim() && products.length > 0 && (
         <div className="search_results">
           {products.map((product) => (
             <div
@@ -71,7 +71,7 @@ const SearchForm = ({ className = "", autoFocus = false, onClose }) => {
               className="search_result"
               onClick={() => {
                 navigate(`/product/${product.id}`);
-                setOpen(false);
+                setOpenSuggestions(false);
                 onClose?.();
               }}
             >

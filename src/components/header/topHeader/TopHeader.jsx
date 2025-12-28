@@ -11,9 +11,11 @@ import { TiShoppingCart } from "react-icons/ti";
 import useCartStore from "../../../store/cart.store";
 import SearchForm from "./SearchForm";
 import SearchModal from "./SearchModal";
+import useFavoritesStore from "../../../store/favorites.store";
 
 const TopHeader = () => {
   const { cart } = useCartStore();
+  const { getFavoritesCount } = useFavoritesStore();
   const [openSearch, setOpenSearch] = useState(false);
 
   return (
@@ -34,10 +36,13 @@ const TopHeader = () => {
               className="mobile_search_btn"
               onClick={() => setOpenSearch(true)}
             >
-              <FaSearch />
+              <FaSearch aria-label="open search modal" />
             </button>
 
-            <FaRegHeart />
+            <Link to="/favorites" className="cart_icon">
+              <FaRegHeart />
+              <span className="count">{getFavoritesCount()}</span>
+            </Link>
 
             <Link to="/cart" className="cart_icon">
               <TiShoppingCart />

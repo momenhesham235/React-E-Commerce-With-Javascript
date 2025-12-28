@@ -109,6 +109,20 @@ header {
   scale: 1.1;
 }
 
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--main_color);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
 /* Toast */
 .toast-wrapper {
   display: flex;

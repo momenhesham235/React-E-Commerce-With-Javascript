@@ -63,15 +63,15 @@ const BottomHeader = () => {
         {/* Right */}
         <div className="sign_register_icon">
           <button className="menu_btn" onClick={() => toggle("menu")}>
-            <IoMdMenu />
+            <IoMdMenu aria-label="open menu" />
           </button>
 
           <Link to="/login">
-            <PiSignInBold />
+            <PiSignInBold aria-label="sign in" />
           </Link>
 
           <Link to="/register">
-            <FaUserPlus />
+            <FaUserPlus aria-label="sign up" />
           </Link>
         </div>
       </div>

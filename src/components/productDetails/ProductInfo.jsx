@@ -2,12 +2,20 @@ import { memo } from "react";
 import { FaRegHeart, FaShare, FaStar } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import useAddToCart from "../../hooks/useAddToCart";
+import useFavoritesStore from "../../store/favorites.store";
 const ProductInfo = ({ product }) => {
   const { handleAddToCart, isInCart } = useAddToCart();
   const isInCartRes = isInCart(product.id);
 
+  const { addFavorite, isInFavorites } = useFavoritesStore();
+  const isInFavoritesRes = isInFavorites(product.id);
+
   return (
-    <div className={`details_item ${isInCartRes ? "inCart" : ""}`}>
+    <div
+      className={`details_item ${isInCartRes ? "inCart" : ""} ${
+        isInFavoritesRes ? "inFavorites" : ""
+      } `}
+    >
       <h2 className="item_title">{product.title}</h2>
 
       <div className="item_stars">
@@ -39,7 +47,7 @@ const ProductInfo = ({ product }) => {
       </button>
 
       <div className="item_icons">
-        <span className="item_icon">
+        <span className="item_icon" onClick={() => addFavorite(product)}>
           <FaRegHeart />
         </span>
         <span className="item_icon">

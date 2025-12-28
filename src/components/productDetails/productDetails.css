@@ -141,6 +141,12 @@
   transition: 0.3s;
 }
 
+.item_details .details_item.inFavorites .item_icons .item_icon:first-child {
+  background-color: var(--main_color);
+  color: var(--white_color);
+  cursor: not-allowed;
+}
+
 .item_details .details_item .item_icons .item_icon:hover {
   background: var(--main_color);
   color: var(--white_color);
