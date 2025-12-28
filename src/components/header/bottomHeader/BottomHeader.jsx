@@ -56,15 +56,16 @@ const BottomHeader = () => {
             links={navLinks}
             className={`mobile_nav_links ${open.menu ? "active" : ""}`}
             onClick={closeAll}
-            ref={menuRef}
           />
         </nav>
 
         {/* Right */}
         <div className="sign_register_icon">
-          <button className="menu_btn" onClick={() => toggle("menu")}>
-            <IoMdMenu aria-label="open menu" />
-          </button>
+          <div ref={menuRef}>
+            <button className="menu_btn" onClick={() => toggle("menu")}>
+              <IoMdMenu aria-label="open menu" />
+            </button>
+          </div>
 
           <Link to="/login">
             <PiSignInBold aria-label="sign in" />
