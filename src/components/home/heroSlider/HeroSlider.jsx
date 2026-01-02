@@ -10,28 +10,35 @@ import "./heroSlider.css";
 import { Autoplay, Pagination } from "swiper/modules";
 
 const HeroSlider = () => {
+  const pagination = {
+    clickable: true,
+    dynamicBullets: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index + 1) + "</span>";
+    },
+  };
   return (
     <>
       <div className="hero">
         <div className="container">
           <Swiper
             loop={true}
-            modules={[Pagination, Autoplay]}
-            pagination={true}
+            pagination={pagination}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
             }}
+            modules={[Pagination, Autoplay]}
             className="mySwiper"
           >
-            {slides.map((slide, index) => (
+            {slides?.map((slide, index) => (
               <SwiperSlide key={index}>
                 <div className="slider_content">
                   <h1>{slide.title}</h1>
                   <h2>
-                    {(slide.name ?? "").split(" ").slice(0, 2).join(" ")}
+                    {slide.name}
                     <br />
-                    {(slide.name ?? "").split(" ").slice(2).join(" ")}
+                    {slide.name}
                   </h2>
                   <p>{slide.desc}</p>
                   <Link to={slide.link} className="btn">

@@ -22,26 +22,27 @@ const SlideProducts = ({ category }) => {
   const { data, loading, error } = useFetch(fetchProducts, [category]);
 
   const swiperBreakpoints = {
-    0: {
+    "@0.00": {
       slidesPerView: 1,
       spaceBetween: 10,
-      centeredSlides: true,
       navigation: false,
     },
-    576: { slidesPerView: 2, spaceBetween: 15, centeredSlides: false },
-    768: {
-      slidesPerView: 3,
+    "@0.75": {
+      slidesPerView: 2,
       spaceBetween: 20,
-      centeredSlides: false,
-      navigation: true,
+      navigation: false,
     },
-    1024: { slidesPerView: 4, spaceBetween: 20, centeredSlides: false },
-    1200: { slidesPerView: 5, spaceBetween: 20, centeredSlides: false },
+    "@1.00": {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    "@1.50": {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
   };
 
-  const slidesPerView = 4;
   const productsLength = data?.products?.length || 0;
-  const shouldLoop = productsLength >= slidesPerView;
 
   return (
     <section className="slide_products slide">
@@ -59,14 +60,11 @@ const SlideProducts = ({ category }) => {
           <p>{error}</p>
         ) : (
           <Swiper
-            loop={shouldLoop}
-            navigation={shouldLoop}
+            loop={true}
+            navigation={true}
             touchRatio={1.5}
             grabCursor={true}
-            autoplay={
-              shouldLoop ? { delay: 2500, disableOnInteraction: false } : false
-            }
-            // spaceBetween={20}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
             modules={[Navigation, Autoplay]}
             className="mySwiper"
             breakpoints={swiperBreakpoints}
