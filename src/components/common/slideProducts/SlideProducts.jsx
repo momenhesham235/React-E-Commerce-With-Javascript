@@ -61,7 +61,10 @@ const SlideProducts = ({ category }) => {
         ) : (
           <Swiper
             loop={true}
-            navigation={true}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
             touchRatio={1.5}
             grabCursor={true}
             autoplay={{ delay: 2500, disableOnInteraction: false }}
@@ -74,6 +77,9 @@ const SlideProducts = ({ category }) => {
                 <Products product={product} />
               </SwiperSlide>
             ))}
+
+            <div className="swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
           </Swiper>
         )}
       </div>

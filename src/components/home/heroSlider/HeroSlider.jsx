@@ -17,6 +17,7 @@ const HeroSlider = () => {
       return '<span class="' + className + '">' + (index + 1) + "</span>";
     },
   };
+
   return (
     <>
       <div className="hero">
@@ -31,8 +32,8 @@ const HeroSlider = () => {
             modules={[Pagination, Autoplay]}
             className="mySwiper"
           >
-            {slides?.map((slide, index) => (
-              <SwiperSlide key={index}>
+            {slides?.map((slide) => (
+              <SwiperSlide key={slide.image}>
                 <div className="slider_content">
                   <h1>{slide.title}</h1>
                   <h2>

@@ -221,7 +221,10 @@
   }
 
   .search_results {
-    max-height: 60vh;
     top: calc(100% + 40px);
+  }
+
+  .search_result {
+    padding: 10px 0;
   }
 }
